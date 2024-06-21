@@ -1,11 +1,7 @@
 from tkinter import *
 from funcoes import cadastro
 from datetime import *
-from funcoes import menu_superior as ms
-
-
-
-
+from interface import menu_superior as ms
 
 
 def adicionarJanela(root):
@@ -15,7 +11,7 @@ def adicionarJanela(root):
         """Função para salvar o investimento no banco de dados"""
         salvar = cadastro.Cadastro(cinstitu.get(), vtipo.get(), vindexador.get(),
                                    ctaxa.get(), cdatini.get(), cdatres.get(),
-                                   cvalor.get(), cin.get(), ccustodia.get())
+                                   cvalor.get(), ccustodia.get())
         salvar.inseririnvest()
         salvar.criartab()
         refresh_painel = ms.CriarMenuSuperior(root, adicionar_invest)
@@ -75,12 +71,6 @@ def adicionarJanela(root):
           anchor=W).place(x=340, y=60, width=90, height=20)
     cdatres = Entry(adicionar_invest) #entrada de texto
     cdatres.place(x=340, y=80, width=100, height=20)
-
-    Label(adicionar_invest, text='IN:', background="light gray",
-          foreground='#009',
-          anchor=W).place(x=220, y=110, width=40, height=20)
-    cin = Entry(adicionar_invest) #entrada de texto
-    cin.place(x=220, y=130, width=40, height=20)
 
     Label(adicionar_invest, text='Valor:', background="light gray", foreground='#009',
           anchor=W).place(x=225, y=60, width=80, height=20)

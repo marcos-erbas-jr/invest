@@ -1,5 +1,5 @@
--Colocar meio de exibir os valores conforme o ano selecionado
+-Colocar meio de exibir os valores conforme o ano selecionado (feito)
+-Adicionar função de inativar investimento (feito)
 
--Colocar instituição onde o investimento se encontra
-
--Colocar modo de consulta para saber qual são os próximos resgastes
+-Adicionar função para mostrar tabela de investimentos encerrados
+-Colocar modo de consulta para saber qual são os próximos resgates

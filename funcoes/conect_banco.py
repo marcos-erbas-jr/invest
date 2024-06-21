@@ -1,9 +1,6 @@
-#>>> Arquivo apenas para consulta da sintaxe SQL apagar este arquivo depois,
-# pois não é necessário parao programa <<<<
-
 import sqlite3
 from sqlite3 import Error
-
+#Conectar ao banco de dados
 def ConexaoBanco():
     """Método usado para realizar a conexão com o Banco de Dados, caso a
     conexão falhe, o método irá mostrar o erro. E se o banco não existir,
@@ -15,7 +12,11 @@ def ConexaoBanco():
     except Error as er:
         print(er)
     return con
+
 '''''''''# CFB Cursos - Aula 47 até 52- Python e Banco de Dados
+#>>> Arquivo apenas para consulta da sintaxe SQL apagar este arquivo depois,
+# pois não é necessário parao programa <<<<
+
 import sqlite3
 from sqlite3 import Error
 

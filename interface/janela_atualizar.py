@@ -2,15 +2,14 @@ import tkinter.messagebox
 from tkinter import *
 from funcoes import atualizar
 from datetime import *
-from funcoes import menu_superior as ms
-
+from interface import menu_superior as ms
 
 
 def janelaAtualizar(root):
     def aviso():
         notice = tkinter.messagebox.askyesno("Confirmar", f"Deseja salvar a "
                                                   f"atualização: "
-                                                  f"{vinvestimento.get( )}\n"
+                                                  f"{vinvestimento.get()}\n"
                                                   f"{vmes.get()}/"
                                                   f"{vano.get()} R$"
                                                   f"{cvalor.get()}")
@@ -33,7 +32,7 @@ def janelaAtualizar(root):
           foreground='#009',
           anchor=W).place(x=20, y=10, width=100, height=20)
     try:
-        investimentos = atualizar.consulta() #retorna uma lista com todos os
+        investimentos = atualizar.consultaNome() #retorna uma lista com todos os
         # investimentos cadastrados
     except:
         Label(atualizar_invest, text='Não há investimentos cadastrados',

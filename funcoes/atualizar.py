@@ -1,11 +1,20 @@
 from funcoes import conect_banco
+#Consulta/Inserção/Atualização
 
 conexao = conect_banco.ConexaoBanco()
 cursor = conexao.cursor()
 
-def consulta():
+def consultaCodigo():
     """Consultar dados"""
-    sql = "SELECT NOME FROM investimentos"
+    sql = "SELECT CODIGO FROM investimentos"
+    c = conexao.cursor()
+    c.execute(sql)
+    resultado = [row[0] for row in c.fetchall()]
+    return resultado
+
+def consultaNome():
+    """Consultar dados"""
+    sql = "SELECT NOME FROM investimentos WHERE ENCERRADO = 0"
     c = conexao.cursor()
     c.execute(sql)
     resultado = [row[0] for row in c.fetchall()]
@@ -18,11 +27,16 @@ class Atualizar:
         self.valor = float(valor)
         self.ano = ano
 
+        cursor.execute(f"SELECT CODIGO FROM investimentos WHERE NOME = "
+                       f"'{self.nome_invest}'")
+        self.codigo = cursor.fetchone()[0]
+        print(self.codigo)
+
     def calcular(self):
         """Função utilizada para calcular o valor do redimento e a taxa do
         mês"""
 
-        cursor.execute(f"SELECT COUNT(*) FROM '{self.nome_invest[:4]}'")
+        cursor.execute(f"SELECT COUNT(*) FROM '{self.codigo}'")
 
         # Obtém o resultado da consulta
         num_registros = cursor.fetchone()[0]
@@ -31,13 +45,13 @@ class Atualizar:
         if num_registros > 0:
             print("A tabela tem registros.") # >>>>>> APAGAR PRINT
             cursor.execute(
-                f"SELECT ID_MES FROM '{self.nome_invest[:4]}' ORDER BY ID_MES DESC "
+                f"SELECT ID_MES FROM '{self.codigo}' ORDER BY ID_MES DESC "
                 f"LIMIT 1")
 
             # Obtém o resultado da consulta
             ultimo_id = cursor.fetchone()[0]
 
-            cursor.execute(f"SELECT VALOR FROM '{self.nome_invest[:4]}' WHERE "
+            cursor.execute(f"SELECT VALOR FROM '{self.codigo}' WHERE "
                          f"ID_MES = "
                             f"?",(ultimo_id,))
 
@@ -47,8 +61,8 @@ class Atualizar:
             self.taxa = round((self.redimento / ultimo_valor)*100, 3) #round
             # arredonda a taxa mensal para 3 casas
         else:
-            cursor.execute(f"SELECT VALORini FROM investimentos WHERE NOME = "
-                            f"'{self.nome_invest}'")
+            cursor.execute(f"SELECT VALORini FROM investimentos WHERE CODIGO = "
+                            f"'{self.codigo}'")
             valor_ini = float(cursor.fetchone()[0])
 
             self.redimento = self.valor - valor_ini
@@ -59,7 +73,7 @@ class Atualizar:
     def inserirInvest(self):
         """Inserir dados"""
         sqlinserir = (
-            f"INSERT INTO '{self.nome_invest[:4]}'(MES,VALOR, "
+            f"INSERT INTO '{self.codigo}'(MES,VALOR, "
             f"RENDIMENTO, TAXA, ANO) "
             f"VALUES('{self.mes}', '{self.valor}', '{self.redimento}', "
             f"'{self.taxa}', '{self.ano}');")

@@ -1,5 +1,5 @@
 from funcoes import conect_banco
-
+#Pega as informações do Banco de dados, para a apresentação em forma de painel
 conexao = conect_banco.ConexaoBanco()
 cursor = conexao.cursor()
 
@@ -11,13 +11,13 @@ def construir_painel(ano):
 
     painel, taxas, rendimentos,valores = [], [], [], []
 
-    sql = "SELECT NOME FROM investimentos"
+    sql = "SELECT CODIGO FROM investimentos"
     c = conexao.cursor()
     c.execute(sql)
     invests = [row[0] for row in c.fetchall()]
     nomes = list()
     for n in invests:
-        nomes.append(n[:4])
+        nomes.append(n)
     print(nomes)
     for m in  meses:
         val = 0

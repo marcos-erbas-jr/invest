@@ -1,8 +1,8 @@
 from tkinter import *
 from datetime import *
-from funcoes import rodape as rdp
+from interface import rodape as rdp, painel_anual as pa
 from funcoes import cadastro
-from funcoes import painel_anual as pa
+
 root = str(datetime.today())[:4]
 root = Tk()
 cadastro.criartabinvests()

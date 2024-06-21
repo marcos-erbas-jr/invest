@@ -1,7 +1,6 @@
 from tkinter import *
-from funcoes import janela_atualizar
-from funcoes import janela_adicionar
-from funcoes import painel_anual as pa
+from interface import painel_anual as pa, janela_atualizar, janela_adicionar, janela_encerramento
+
 
 class CriarMenuSuperior():
     def __init__(self,root, destroyFrame):
@@ -20,6 +19,14 @@ class CriarMenuSuperior():
     def atualizar(self):
         self.destroyFrame.destroy()
         janela_atualizar.janelaAtualizar(self.root)
+
+    def encerrar(self):
+        self.destroyFrame.destroy()
+        janela_encerramento.janelaEncerrar(self.root)
+
+    def mostrarEncerrados(self):
+        self.destroyFrame.destroy()
+        janela_encerramento.janelaDeEncerrados(self.root)
 
     def home(self):
         self.destroyFrame.destroy()
@@ -50,9 +57,9 @@ class CriarMenuSuperior():
 
         #Menu encerrar
         menuEncerrar = Menu(barraMenu, tearoff=0)
-        menuEncerrar.add_command(label='Encerrar investimento', command=self.semComando)
+        menuEncerrar.add_command(label='Encerrar investimento', command=self.encerrar)
         menuEncerrar.add_separator()
-        menuEncerrar.add_command(label='Visualizar encerrados', command=self.semComando)
+        menuEncerrar.add_command(label='Visualizar encerrados', command=self.mostrarEncerrados)
         barraMenu.add_cascade(label='Encerrados', menu=menuEncerrar)
 
 
