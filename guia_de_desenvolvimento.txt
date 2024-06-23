@@ -1,5 +1,7 @@
 -Colocar meio de exibir os valores conforme o ano selecionado (feito)
 -Adicionar função de inativar investimento (feito)
+-Adicionar coluna com timestamp quando atualizar cada mês (feito)
 
+-Utilizar o timestamp para calcular rendimento de acordo com o mês anterior
 -Adicionar função para mostrar tabela de investimentos encerrados
 -Colocar modo de consulta para saber qual são os próximos resgates

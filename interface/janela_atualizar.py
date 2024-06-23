@@ -3,6 +3,7 @@ from tkinter import *
 from funcoes import atualizar
 from datetime import *
 from interface import menu_superior as ms
+from informacoes import filtros_calendario as fc
 
 
 def janelaAtualizar(root):
@@ -54,8 +55,7 @@ def janelaAtualizar(root):
             Label(atualizar_invest, text='Mês:', background="light gray",
                   foreground='#009',
                   anchor=W).place(x=300, y=10, width=35, height=20)
-            mes = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Aug", "Set", "Out",
-                     "Nov", "Dez"]
+            mes = fc.meses
 
             vmes = StringVar()
             vmes.set(mes[0])
@@ -68,7 +68,7 @@ def janelaAtualizar(root):
             Label(atualizar_invest, text='Ano:', background="light gray",
                   foreground='#009',
                   anchor=W).place(x=370, y=10, width=30, height=20)
-            ano = ["2022", "2023", "2024","2025","2026","2027"]
+            ano = fc.anos
 
             vano = StringVar()
             vano.set(ano[2])

@@ -45,7 +45,7 @@ class Cadastro:
         tabela investimentos"""
         sqlcriartb = (f"CREATE TABLE '{self.ident}' (ID_MES INTEGER PRIMARY "
                       f"KEY AUTOINCREMENT, MES VARCHAR(4),"
-                      f"ANO VARCHAR(4),VALOR DECIMAL(6, 2),RENDIMENTO DECIMAL(5, 2),TAXA DECIMAL(3, 2));")
+                      f"ANO VARCHAR(4),VALOR DECIMAL(6, 2),RENDIMENTO DECIMAL(5, 2),TAXA DECIMAL(3, 2), NTIME TIMESTAMP);")
         try:
             c = con.cursor()
             c.execute(sqlcriartb)

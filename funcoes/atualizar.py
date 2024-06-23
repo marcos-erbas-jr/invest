@@ -1,4 +1,6 @@
 from funcoes import conect_banco
+import datetime as dt
+from informacoes import filtros_calendario as fc
 #Consulta/Inserção/Atualização
 
 conexao = conect_banco.ConexaoBanco()
@@ -26,6 +28,8 @@ class Atualizar:
         self.mes = mes
         self.valor = float(valor)
         self.ano = ano
+        self.timestamp = (dt.datetime.timestamp(dt.datetime(int(ano), fc.meses.index(mes) + 1, 21, 23, 59, 59)))
+        # self.timestamp gera o timestamp de um investimento cadastrado às 23h:59m:59s do dia 21 do mês e ano informado
 
         cursor.execute(f"SELECT CODIGO FROM investimentos WHERE NOME = "
                        f"'{self.nome_invest}'")
@@ -74,9 +78,9 @@ class Atualizar:
         """Inserir dados"""
         sqlinserir = (
             f"INSERT INTO '{self.codigo}'(MES,VALOR, "
-            f"RENDIMENTO, TAXA, ANO) "
+            f"RENDIMENTO, TAXA, ANO, NTIME) "
             f"VALUES('{self.mes}', '{self.valor}', '{self.redimento}', "
-            f"'{self.taxa}', '{self.ano}');")
+            f"'{self.taxa}', '{self.ano}', '{self.timestamp}');")
 
         try:
             c = conexao.cursor()

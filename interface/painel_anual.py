@@ -2,14 +2,15 @@ from tkinter import *
 from interface import menu_superior as ms
 from funcoes import mostrar_painel
 from datetime import *
+from informacoes import filtros_calendario as fc
 
 def painelAnual(root):
     filtro = datetime.date(datetime.today())
+    print(filtro)
     ano = str(filtro)[:4]
+    print(ano)
     def mostrarPainel(filtro):
-        meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Aug", "Set",
-                 "Out",
-                 "Nov", "Dez"]
+        meses = fc.meses
         valores_painel = mostrar_painel.construir_painel(filtro)
         print(valores_painel)
         pos_y = 61
@@ -35,10 +36,11 @@ def painelAnual(root):
     barra_superior = ms.CriarMenuSuperior(root, invest_anual)
     barra_superior.criarBarraMenu()
 
-    listaFiltro = ["2023", "2024", "2025", "2026","2027"]
+    listaFiltro = fc.anos
 
     vfiltro = StringVar()
-    vfiltro.set(listaFiltro[1])
+    vfiltro.set(listaFiltro[listaFiltro.index(ano)])#Seleciona como padrão o ano atual
+
     bl_filtro = Label(invest_anual, text="Investimentos de:",
                       background="light blue",font=("Helvetica",17, "bold"),
                       anchor="w" )

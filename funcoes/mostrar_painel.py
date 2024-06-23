@@ -1,10 +1,11 @@
 from funcoes import conect_banco
+from informacoes import filtros_calendario as fc
+
 #Pega as informações do Banco de dados, para a apresentação em forma de painel
 conexao = conect_banco.ConexaoBanco()
 cursor = conexao.cursor()
 
-meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Aug", "Set","Out",
-             "Nov", "Dez"]
+meses = fc.meses
 
 def construir_painel(ano):
     """Consultar dados"""
