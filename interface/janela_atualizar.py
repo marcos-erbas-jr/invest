@@ -56,9 +56,10 @@ def janelaAtualizar(root):
                   foreground='#009',
                   anchor=W).place(x=300, y=10, width=35, height=20)
             mes = fc.meses
+            mes_atual = int(str(datetime.date(datetime.today()))[5:7])-1
 
             vmes = StringVar()
-            vmes.set(mes[0])
+            vmes.set(mes[mes_atual])
             op_indexador= OptionMenu(atualizar_invest, vmes, *mes)  # Foi usado
             # um *
             # para
@@ -69,9 +70,10 @@ def janelaAtualizar(root):
                   foreground='#009',
                   anchor=W).place(x=370, y=10, width=30, height=20)
             ano = fc.anos
+            ano_atual = str(datetime.date(datetime.today()))[:4]
 
             vano = StringVar()
-            vano.set(ano[2])
+            vano.set(ano[ano.index(ano_atual)])
             if vano == "Auto":
                 vano = str(datetime.today().year)
             op_indexador = OptionMenu(atualizar_invest, vano, *ano)  # Foi

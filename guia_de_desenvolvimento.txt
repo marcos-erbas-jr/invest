@@ -4,4 +4,6 @@
 
 -Utilizar o timestamp para calcular rendimento de acordo com o mês anterior
 -Adicionar função para mostrar tabela de investimentos encerrados
--Colocar modo de consulta para saber qual são os próximos resgates
+-Colocar modo de consulta para saber qual são os próximos resgates, isso pode ser feito por meio do
+timestamp, onde primeiro é verificado o timestamp cadastrado no resgate de cada investimento na tabela investimento
+e ordena os investimento de acordo com os timestamp maiores que o atual

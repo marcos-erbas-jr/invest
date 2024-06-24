@@ -6,9 +6,7 @@ from informacoes import filtros_calendario as fc
 
 def painelAnual(root):
     filtro = datetime.date(datetime.today())
-    print(filtro)
     ano = str(filtro)[:4]
-    print(ano)
     def mostrarPainel(filtro):
         meses = fc.meses
         valores_painel = mostrar_painel.construir_painel(filtro)
