@@ -1,6 +1,7 @@
 import tkinter.messagebox
 from tkinter import *
 from funcoes import atualizar
+from funcoes import validacao_atualizacao
 from datetime import *
 from interface import menu_superior as ms
 from informacoes import filtros_calendario as fc
@@ -16,9 +17,15 @@ def janelaAtualizar(root):
                                                   f"{cvalor.get()}")
         print(notice) # >>>>>> APAGAR PRINT
         if notice:
-                salvar = atualizar.Atualizar(vmes.get(), cvalor.get(),vinvestimento.get(), vano.get())
-                salvar.calcular()
-                salvar.inserirInvest()
+                validar = validacao_atualizacao.Validar(vmes.get(), cvalor.get(),vinvestimento.get(), vano.get())
+                validar = validar.validacao()
+                print(validar)
+                if validar == 1:
+                    notice = tkinter.messagebox.showwarning("Erro", f"Não foi possível salvar esta atualização, "
+                                                                    f"a data da atualização é anterior a data inicial.")
+                if validar == 2:
+                    notice = tkinter.messagebox.showwarning("Erro", f"Não foi possível salvar esta atualização, "
+                                                                    f"a data da atualização é superior a data de resgate.")
                 refresh_painel = ms.CriarMenuSuperior(root, atualizar_invest)
                 refresh_painel.atualizar()
 
